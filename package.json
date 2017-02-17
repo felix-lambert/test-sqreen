@@ -1,0 +1,43 @@
+{
+  "name": "thinking-in-react",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-server": "webpack-dev-server --host 0.0.0.0 --hot --progress --colors",
+    "web-server": "http-server -p 3000 .",
+    "start": "npm run webpack-server & npm run web-server"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.16.0",
+    "file-loader": "^0.8.4",
+    "http-server": "^0.8.0",
+    "img-loader": "^1.2.0",
+    "node-sass": "^3.2.0",
+    "postcss-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.8",
+    "sass-loader": "^2.0.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.12.3",
+    "svgo": "^0.5.6",
+    "svgo-loader": "^1.1.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "react": "0.14.x",
+    "react-dom": "0.14.x",
+    "react-fontawesome": "^1.5.0",
+    "react-icons": "^2.2.3",
+    "react-search-input": "^0.10.4",
+    "redux": "^3.6.0",
+    "redux-filter": "^2.1.3"
+  }
+}
