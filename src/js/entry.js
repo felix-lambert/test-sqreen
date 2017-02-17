@@ -2,6 +2,18 @@ import './styles.scss'
 import FaSearch from 'react-icons/lib/fa/search'
 import FaUserAdd from 'react-icons/lib/ti/user-add'
 
+/* React well understood the fact that the DOM is slow, and so needs to limit the interaction
+   with it. It uses a virtual DOM. A Virtual DOM is a representation of the DOM in JavaScript. 
+   Instead of generating the DOM itself as with a templating language, ie instead of dialoging 
+   with the browser APIs to build the DOM, we only generate a tree of JavaScript objects in 
+   memory.
+*/
+import React from 'react'
+
+
+import ReactDOM from 'react-dom'
+import { combineReducers, createStore } from 'redux'
+
 const filter = (state = [], action) => {
   switch (action.type) {
     case 'VISIBILITY_FILTER':
@@ -11,7 +23,6 @@ const filter = (state = [], action) => {
   }
 };
 
-const { combineReducers, createStore } = Redux;
 const todoApp = combineReducers({
   filter
 });
