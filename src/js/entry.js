@@ -1,7 +1,3 @@
-import './styles.scss'
-import FaSearch from 'react-icons/lib/fa/search'
-import FaUserAdd from 'react-icons/lib/ti/user-add'
-
 /* React well understood the fact that the DOM is slow, and so needs to limit the interaction
    with it. It uses a virtual DOM. A Virtual DOM is a representation of the DOM in JavaScript. 
    Instead of generating the DOM itself as with a templating language, ie instead of dialoging 
@@ -10,116 +6,16 @@ import FaUserAdd from 'react-icons/lib/ti/user-add'
 */
 import React from 'react'
 
-
+/*
+  The react-dom package provides DOM-specific methods that can 
+  be used at the top level of your app and as an escape hatch 
+  to get outside of the React model if you need to
+ */
 import ReactDOM from 'react-dom'
-import { combineReducers, createStore } from 'redux'
 
-const filter = (state = [], action) => {
-  switch (action.type) {
-    case 'VISIBILITY_FILTER':
-      return action.text;
-    default:
-      return state;
-  }
-};
+import { store } from './store/'
 
-const todoApp = combineReducers({
-  filter
-});
-
-const store = createStore(todoApp);
-
-
-class ProductTable extends React.Component {
-  render() {
-    var rows = [];
-    this.props.users.forEach(function(user) {
-      if (user.name.indexOf(this.props.filterText) === -1 && 
-        user.email.indexOf(this.props.filterText) === -1) {
-        return;
-      }
-      rows.push(<ProductRow user={user} key={user.id} />);
-    }.bind(this));
-    return (
-      <div className='container'>
-        <table className='table table-striped'>
-          <thead>
-            <tr>
-              <th>MEMBERS IN MY TEAM</th>
-              <th className='text-center'>
-              <FaSearch />
-              <input className='search'
-                placeholder='Search...'
-                ref={node => {
-                  this.input = node;
-                }}
-                onChange={() => {
-                  store.dispatch({
-                    type: 'VISIBILITY_FILTER',
-                    text: this.input.value
-                  });
-                }}
-           /></th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      </div>
-    );
-  }
-}
-
-class ProductRow extends React.Component {
-  render() {
-    var name = this.props.user.name;
-    var email = this.props.user.email;
-      <span>
-        {name}
-      </span>;
-    return (
-      <tr>
-        <td>
-        <div className="row">
-          <div className="col-md-2">
-          <div className="testimonial-desc">
-            <h1>
-            <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" /> 
-            </h1>
-          </div>
-          </div>
-          <div className="col-md-6 well-blue-p">
-          <p>{name}
-          <br/>
-            <small className='logo'>{email}</small>
-          </p>
-            
-          </div>
-          </div>
-        </td>
-        <td className='text-center logo'><h1><FaUserAdd /></h1>Click here</td>
-      </tr>
-    );
-  }
-}
-
-class SearchBar extends React.Component {
-  render() {
-    const state = store.getState();
-    return (
-      <div>
-        <br/>
-        
-         <br/>
-        <ProductTable 
-          users={this.props.users}
-          filterText={state.filter}
-        />
-
-      </div>
-    );
-  }
-}
-
+import FilterableUserTable from './component/FilterableUserTableComponent';
 
 const USERS = [
   {id:1, name: 'Jennifer Tanker', email: 'qa_jennifer@tanker.io'},
@@ -134,14 +30,34 @@ const USERS = [
 ];
 
 const render = () => {
+  /* 
+    With our knowledge so far, the only way to update the UI 
+    is to create a new element, and pass it to ReactDOM.render()
+    In practice, most React apps only call ReactDOM.render() once
+   */
   ReactDOM.render(
-    <SearchBar
-      filter={store.getState().filter}
+    <FilterableUserTable
+      /* 
+        It retrieves the current state of the Redux store. 
+        If we were on this, we're going to see '' because this 
+        is the initial state of our application.
+        The render function is called any time this store 
+        state changes, so I can safely pass the current state 
+        of this store as a prop to my root component.
+       */
+      filter={store.getState()}
       users={USERS}
     />,
+    /*
+      It renders it into the div I created inside the HTML. 
+      It's div with the id called root
+     */
     document.getElementById('root')
   );
 };
 
+/*
+  You can use subscribe() to update the UI in response to state changes.
+ */
 store.subscribe(render);
 render();
