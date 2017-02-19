@@ -55,12 +55,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loaders: [
-            'react-hot',
-            'babel?stage=2'
-        ]
+        test: /\.js$/,
+        loader: 'babel-loader'
       }
     ]
   }

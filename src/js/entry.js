@@ -17,7 +17,7 @@ import { store } from './store/'
 
 import FilterableUserTable from './component/FilterableUserTableComponent';
 
-const USERS = [
+export const USERS = [
   {id:1, name: 'Jennifer Tanker', email: 'qa_jennifer@tanker.io'},
   {id:2, name: 'Micher Tanker', email: 'qa_michel@tanker.io'},
   {id:3, name: 'Germaine Tanker', email: 'qa_germaine@tanker.io'},
