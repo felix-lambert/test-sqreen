@@ -10,8 +10,10 @@ import '../../sass/styles.scss'
 export default class FilterableUserTable extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <br/>
+        <input placeholder="Please enter a git url"></input>
+        <button placeholder="Please enter a git url">Validate</button>
         <UserTable 
           users={this.props.users}
           filterText={this.props.filter}

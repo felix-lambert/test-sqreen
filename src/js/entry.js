@@ -15,6 +15,15 @@ import ReactDOM from 'react-dom'
 
 import { store } from './store/'
 
+/* 
+  You may wonder why we split up the files at all — why 
+  not keep everything in index.js? The reason is because 
+  we need to import the components into our test, and if 
+  we import them from the index.js file, ReactDOM.render() 
+  will execute. This causes us to be dependent on the 
+  existence of a DOM, even though most of our tests 
+  won't need it (because they're using shallow rendering).
+ */
 import FilterableUserTable from './component/FilterableUserTableComponent';
 
 export const USERS = [

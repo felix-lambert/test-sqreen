@@ -55,6 +55,9 @@ module.exports = {
         ]
       },
       {
+        /* 
+          The Babel transpilation toolset lets you turn your ES6 code to ES5
+         */
         test: /\.js$/,
         loader: 'babel-loader'
       }
