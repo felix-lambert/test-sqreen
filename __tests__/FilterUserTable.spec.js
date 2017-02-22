@@ -89,7 +89,7 @@ describe('<FilterableUserTable/>', function () {
     ])).to.equal(true);
   });
 
-  it('should find an <input />', function () {
+/*  it('should find an <input />', function () {
     const wrapper = shallow(<FilterableUserTable
       filter={store.getState()}
       users={USERS}
@@ -98,9 +98,9 @@ describe('<FilterableUserTable/>', function () {
     expect(wrapper.containsAllMatchingElements([
       <input />
     ])).to.equal(true);
-  });
+  });*/
 
-  it('should find a <button />', function () {
+/*  it('should find a <button />', function () {
     const wrapper = shallow(<FilterableUserTable
       filter={store.getState()}
       users={USERS}
@@ -108,7 +108,7 @@ describe('<FilterableUserTable/>', function () {
 
     expect(wrapper.containsAllMatchingElements([
       <button placeholder="Please enter a git url">Validate</button>
-    ])).to.equal(true);
-  });
-
+    ])).to.equal(true);*/
+/*  });
+*/
 });

@@ -1,4 +1,4 @@
-## Tanker test
+## Sqreen test
 
 # Setup
 

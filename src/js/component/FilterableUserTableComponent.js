@@ -12,8 +12,8 @@ export default class FilterableUserTable extends React.Component {
     return (
       <div className="container">
         <br/>
-        <input placeholder="Please enter a git url"></input>
-        <button placeholder="Please enter a git url">Validate</button>
+        {/*<input placeholder="Please enter a git url"></input>
+        <button placeholder="Please enter a git url">Validate</button>*/}
         <UserTable 
           users={this.props.users}
           filterText={this.props.filter}
